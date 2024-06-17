@@ -97,3 +97,6 @@ class Agent():
     def print_policy(self):
         for row in self.pi_str:
             print(row)
+
+
+

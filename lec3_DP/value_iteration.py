@@ -124,3 +124,41 @@ print(gridworld.get_value_function())
 gridworld.update_greedy_policy()
 gridworld.print_policy()
 
+
+
+
+
+
+def calculate_max_value(self, i, j):
+    max_value = float('-inf')
+    best_action = None
+    best_actions_str = ""
+    for action_index in range(len(self.actions)):
+        next_i, next_j = self.step(action_index, i, j)
+        if self.is_valid_state(next_i, next_j):
+            # Calculate the value function if the state is valid
+            value = self.reward + self.gamma * self.V[next_i, next_j]
+            if value > max_value:
+                max_value = value
+                best_action = action_index
+                best_actions_str = self.action_description[action_index]
+    return max_value, best_action, best_actions_str
+
+
+
+def calculate_max_value(self, i, j):
+    max_value = float('-inf')
+    best_action = None
+    best_actions_str = ""
+    for action_index in range(len(self.actions)):
+        next_i, next_j = self.step(action_index, i, j)
+        if self.is_valid_state(next_i, next_j):
+            # Calculate the value function if the state is valid
+            value = self.reward + self.gamma * self.V[next_i, next_j]
+            if value > max_value:
+                max_value = value
+                best_action = action_index
+                best_actions_str = self.action_description[action_index]
+    # Update the value function for the current state
+    self.V[i, j] = max_value
+    return max_value, best_action, best_actions_str
